@@ -20,4 +20,12 @@ public class VendingMachine {
     public Item getItem(String name) {
         return items.getItem(name);
     }
+
+    public boolean canAffordAtLeastOneItem(Money inputMoney) {
+        return inputMoney.isAffordable(cheapestItemPrice());
+    }
+
+    public Price cheapestItemPrice() {
+        return items.cheapestPrice();
+    }
 }
