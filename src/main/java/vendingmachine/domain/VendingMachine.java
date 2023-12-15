@@ -5,20 +5,18 @@ import java.util.Map;
 public class VendingMachine {
     private final Coins coins;
     private final Items items;
-    private final Money money;
 
-    public VendingMachine(Coins coins, Items items, Money money) {
+    public VendingMachine(Coins coins, Items items) {
         this.coins = coins;
         this.items = items;
-        this.money = money;
     }
 
     public Items getItems() {
         return items;
     }
 
-    public int getMoney() {
-        return money.getValue();
+    public Coins getCoins() {
+        return coins;
     }
 
     public boolean contains(String name) {
