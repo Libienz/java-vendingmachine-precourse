@@ -29,4 +29,9 @@ public class Items {
                 .map(Item::getPrice)
                 .orElseThrow(() -> new IllegalArgumentException(NO_SUCH_ITEM_MESSAGE));
     }
+
+    public boolean hasNoItem() {
+        return items.stream()
+                .allMatch(item -> item.getQuantity() == 0);
+    }
 }
