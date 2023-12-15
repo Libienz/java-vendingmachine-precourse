@@ -30,7 +30,7 @@ public class MainController {
         Money inputMoney = doRepeat(inputView::readInputMoney);
         VendingMachine vendingMachine = new VendingMachine(coins, items, inputMoney);
 
-        while (vendingMachine.isInputMoneyCanAffordAtLeastOneItem()) {
+        while (!vendingMachine.changeReturnCondition()) {
             outputView.printInputMoney(vendingMachine.getRemainMoney());
             doRepeat(() -> purchaseItem(vendingMachine, inputMoney));
         }

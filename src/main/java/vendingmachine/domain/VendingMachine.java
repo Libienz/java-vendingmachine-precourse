@@ -27,8 +27,14 @@ public class VendingMachine {
         return items.getItem(name);
     }
 
-    public boolean isInputMoneyCanAffordAtLeastOneItem() {
-        return money.isAffordable(cheapestItemPrice());
+    public boolean changeReturnCondition() {
+        if (!money.isAffordable(cheapestItemPrice())) {
+            return true;
+        }
+        if (items.hasNoItem()) {
+            return true;
+        }
+        return false;
     }
 
     public Price cheapestItemPrice() {
