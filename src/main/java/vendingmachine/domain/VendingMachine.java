@@ -41,6 +41,7 @@ public class VendingMachine {
             throw new IllegalArgumentException(NOT_ENOUGH_INPUT_MESSAGE);
         }
         money.subtract(item.getPrice());
+        item.sale();
     }
 
     public void addMoney(Money money) {
