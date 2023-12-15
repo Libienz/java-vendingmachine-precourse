@@ -1,5 +1,6 @@
 package vendingmachine.domain;
 
+import java.util.Comparator;
 import java.util.List;
 
 public class Items {
@@ -18,6 +19,13 @@ public class Items {
         return items.stream()
                 .filter(item -> name.equals(item.getName()))
                 .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException(NO_SUCH_ITEM_MESSAGE));
+    }
+
+    public Price cheapestPrice() {
+        return items.stream()
+                .min(Comparator.comparingInt(item -> item.getPrice().getAmount()))
+                .map(Item::getPrice)
                 .orElseThrow(() -> new IllegalArgumentException(NO_SUCH_ITEM_MESSAGE));
     }
 }
