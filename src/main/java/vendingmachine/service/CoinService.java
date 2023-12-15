@@ -5,10 +5,11 @@ import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 import vendingmachine.domain.Coin;
+import vendingmachine.domain.Coins;
 import vendingmachine.domain.Money;
 
 public class CoinService {
-    public Map<Coin, Integer> moneyToCoins(Money money) {
+    public Coins moneyToCoins(Money money) {
         Map<Coin, Integer> coins = new EnumMap<>(Coin.class);
         int remainingAmount = money.getValue();
 
@@ -20,7 +21,7 @@ public class CoinService {
             }
         }
 
-        return coins;
+        return new Coins(coins);
     }
 
     private Coin getRandomCoin() {
