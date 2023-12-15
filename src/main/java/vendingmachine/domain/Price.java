@@ -1,4 +1,4 @@
-package vendingmachine;
+package vendingmachine.domain;
 
 public class Price {
     private static final String INVALID_AMOUNT_PRICE_MESSAGE = "[ERROR] 상품 가격이 적절하지 않습니다";

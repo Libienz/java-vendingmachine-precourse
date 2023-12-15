@@ -1,4 +1,4 @@
-package vendingmachine;
+package vendingmachine.domain;
 
 public class Money {
     private final int value;
