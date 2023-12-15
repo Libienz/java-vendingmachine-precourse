@@ -3,6 +3,7 @@ package vendingmachine.domain;
 import java.util.List;
 
 public class Items {
+    private static final String NO_SUCH_ITEM_MESSAGE = "[ERROR] 해당하는 상품을 찾을 수 없습니다";
     private final List<Item> items;
 
     public Items(List<Item> items) {
@@ -13,8 +14,10 @@ public class Items {
         return items;
     }
 
-    public boolean contains(String name) {
+    public Item getItem(String name) {
         return items.stream()
-                .anyMatch(item -> name.equals(item.getName()));
+                .filter(item -> name.equals(item.getName()))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException(NO_SUCH_ITEM_MESSAGE));
     }
 }
