@@ -24,6 +24,7 @@ public class Items {
 
     public Price cheapestPrice() {
         return items.stream()
+                .filter(item -> item.getQuantity() > 0)
                 .min(Comparator.comparingInt(item -> item.getPrice().getAmount()))
                 .map(Item::getPrice)
                 .orElseThrow(() -> new IllegalArgumentException(NO_SUCH_ITEM_MESSAGE));
