@@ -26,21 +26,23 @@ public class MainController {
         Money vendingMachineMoney = doRepeat(inputView::readVendingMachineMoney);
         Items items = doRepeat(inputView::readItems);
         Coins coins = coinService.moneyToCoins(vendingMachineMoney);
-        VendingMachine vendingMachine = new VendingMachine(coins, items, vendingMachineMoney);
 
         Money inputMoney = doRepeat(inputView::readInputMoney);
-        while (vendingMachine.isMoneyCanAffordAtLeastOneItem(inputMoney)) {
-            outputView.printInputMoney(inputMoney.getValue());
+        VendingMachine vendingMachine = new VendingMachine(coins, items, inputMoney);
+
+        while (vendingMachine.isInputMoneyCanAffordAtLeastOneItem()) {
+            outputView.printInputMoney(vendingMachine.getRemainMoney());
             doRepeat(() -> purchaseItem(vendingMachine, inputMoney));
         }
 
+        outputView.printInputMoney(vendingMachine.getRemainMoney());
         Coins change = vendingMachine.getChange();
         outputView.printChanges(CoinsDto.from(change));
     }
 
     private Money purchaseItem(VendingMachine vendingMachine, Money inputMoney) {
         String itemName = inputView.readItemName();
-        vendingMachine.purchaseItem(inputMoney, itemName);
+        vendingMachine.purchaseItem(itemName);
         return inputMoney;
     }
 }

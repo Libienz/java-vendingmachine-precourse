@@ -27,22 +27,29 @@ public class VendingMachine {
         return items.getItem(name);
     }
 
-    public boolean isMoneyCanAffordAtLeastOneItem(Money inputMoney) {
-        return inputMoney.isAffordable(cheapestItemPrice());
+    public boolean isInputMoneyCanAffordAtLeastOneItem() {
+        return money.isAffordable(cheapestItemPrice());
     }
 
     public Price cheapestItemPrice() {
         return items.cheapestPrice();
     }
 
-    public void purchaseItem(Money inputMoney, String itemName) {
+    public void purchaseItem(String itemName) {
         Item item = getItem(itemName);
-        if (!inputMoney.isAffordable(item.getPrice())) {
+        if (!money.isAffordable(item.getPrice())) {
             throw new IllegalArgumentException(NOT_ENOUGH_INPUT_MESSAGE);
         }
-        inputMoney.subtract(item.getPrice());
+        money.subtract(item.getPrice());
     }
 
+    public void addMoney(Money money) {
+        this.money.add(money);
+    }
+
+    public int getRemainMoney() {
+        return this.money.getValue();
+    }
     public Coins getChange() {
         Coin coin;
         Map<Coin, Integer> coinCountMap = new HashMap<>();

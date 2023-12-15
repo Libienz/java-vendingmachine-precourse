@@ -18,4 +18,8 @@ public class Money {
     public void subtract(Price price) {
         value -= price.getAmount();
     }
+
+    public void add(Money money) {
+        value += money.getValue();
+    }
 }
