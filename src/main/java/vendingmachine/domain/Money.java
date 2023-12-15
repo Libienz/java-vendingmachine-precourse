@@ -12,7 +12,7 @@ public class Money {
     }
 
     public boolean isAffordable(Price price) {
-        return value > price.getAmount();
+        return value >= price.getAmount();
     }
 
     public void subtract(Price price) {
