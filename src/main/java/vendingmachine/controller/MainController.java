@@ -24,8 +24,11 @@ public class MainController {
 
     public void run() {
         Money vendingMachineMoney = doRepeat(inputView::readVendingMachineMoney);
-        Items items = doRepeat(inputView::readItems);
         Coins coins = coinService.moneyToCoins(vendingMachineMoney);
+        outputView.printVendingMachineCoins(CoinsDto.from(coins));
+
+        Items items = doRepeat(inputView::readItems);
+
 
         Money inputMoney = doRepeat(inputView::readInputMoney);
         VendingMachine vendingMachine = new VendingMachine(coins, items, inputMoney);
