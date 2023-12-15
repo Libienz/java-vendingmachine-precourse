@@ -12,4 +12,9 @@ public class Items {
     public List<Item> getItems() {
         return items;
     }
+
+    public boolean contains(String name) {
+        return items.stream()
+                .anyMatch(item -> name.equals(item.getName()));
+    }
 }
