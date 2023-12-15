@@ -1,7 +1,7 @@
 package vendingmachine.domain;
 
 public class Money {
-    private final int value;
+    private int value;
 
     public Money(int value) {
         this.value = value;
@@ -9,5 +9,13 @@ public class Money {
 
     public int getValue() {
         return value;
+    }
+
+    public boolean isAffordable(Price price) {
+        return value > price.getAmount();
+    }
+
+    public void subtract(Price price) {
+        value -= price.getAmount();
     }
 }
