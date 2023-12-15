@@ -16,4 +16,8 @@ public class OutputView {
     public void printChanges(CoinsDto coinsDto) {
         System.out.println(messageResolver.resolveChangeMessage(coinsDto));
     }
+
+    public void printInputMoney(int amount) {
+        System.out.println(messageResolver.resolveInputAmount(amount));
+    }
 }
