@@ -18,6 +18,7 @@ public class Coins {
     public Coin getMostValuableCoinLessThanMoney(Money money) {
         for (Coin coin : Coin.values()) {
             if (coin.getAmount() <= money.getValue() && coins.getOrDefault(coin, 0) != 0) {
+                coins.put(coin, coins.get(coin) - 1);
                 return coin;
             }
         }
