@@ -1,7 +1,5 @@
 package vendingmachine.domain;
 
-import java.util.Map;
-
 public class VendingMachine {
     private final Coins coins;
     private final Items items;
@@ -19,7 +17,7 @@ public class VendingMachine {
         return coins;
     }
 
-    public boolean contains(String name) {
-        return items.contains(name);
+    public Item getItem(String name) {
+        return items.getItem(name);
     }
 }
