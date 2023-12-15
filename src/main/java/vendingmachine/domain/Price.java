@@ -4,14 +4,14 @@ public class Price {
     private static final String INVALID_AMOUNT_PRICE_MESSAGE = "[ERROR] 상품 가격이 적절하지 않습니다";
     private static final int MIN_PRICE = 100;
     private static final int PRICE_UNIT = 10;
-    private final int price;
+    private final int amount;
 
-    public Price(int price) {
-        this.price = price;
+    public Price(int amount) {
+        this.amount = amount;
     }
 
-    public int getPrice() {
-        return price;
+    public int getAmount() {
+        return amount;
     }
 
     private void validate(int price) {
